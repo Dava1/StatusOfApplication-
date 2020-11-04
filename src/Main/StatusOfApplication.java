@@ -157,11 +157,6 @@ public class StatusOfApplication {
         conn.setRequestProperty("Accept","text/html,application/xhtml+xml,application/xml;q=0.9," +
                 "image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
         conn.setRequestProperty("Accept-Language","en-US,en;q=0.9,ru;q=0.8,cs;q=0.7");
-//        if(cookies !=null){
-//            for(String cookie: cookies){
-//                conn.addRequestProperty("Cookie",cookie.split(";",1)[0]);
-//           }
-//        }
         conn.setRequestProperty("Connection", "keep-alive");
         conn.setRequestProperty("Referer", "https://frs.gov.cz/cs/ioff/application-status");
         conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -172,15 +167,6 @@ public class StatusOfApplication {
         out.writeBytes(postParams);
         out.flush();
         out.close();boolean redirect = false;
-//        int responseCode = conn.getResponseCode();
-//        if (responseCode!=HttpsURLConnection.HTTP_OK){
-//            if(responseCode == HttpsURLConnection.HTTP_MOVED_TEMP){
-//                redirect =true;
-//            }
-//        }
-//        System.out.println("\nSending POST request to url "+url);
-//        System.out.println("Post parameters :"+postParams);
-//        System.out.println("Response Code: "+responseCode);
         BufferedReader in =
                 new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String inLine;
@@ -190,20 +176,6 @@ public class StatusOfApplication {
         }
         in.close();
         int responseCode = conn.getResponseCode();
-//        if (responseCode!=HttpsURLConnection.HTTP_OK){
-//            if(responseCode == HttpsURLConnection.HTTP_MOVED_TEMP){
-//                redirect =true;
-//            }
-//        }
-//        if (redirect){
-//            String cookie1 = conn.getHeaderField("Set-Cookie");
-//            conn = (HttpURLConnection)new URL(url).openConnection();
-//            conn.addRequestProperty(cookie1,cookie1.split(";",1)[0]);
-//            conn.setRequestProperty("Connection", "keep-alive");
-//            conn.setRequestProperty("Referer", "https://frs.gov.cz/cs/ioff/application-status");
-//            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-//            conn.setRequestProperty("Content-Length",Integer.toString(postParams.length()));
-//        }
         System.out.println("\nSending POST request to url "+url);
         System.out.println("Post parameters :"+postParams);
         System.out.println("Response Code: "+responseCode);
